@@ -73,13 +73,13 @@ function selected($currency, $selectName)
 
     <link rel="stylesheet" href="./style.css">
 
-    <title>Drink Price Converter</title>
+    <title>Fancy Drink Price Converter</title>
 </head>
 
 <body>
 
     <header>
-        <h1>Drink Price Converter</h1>
+        <h1>Fancy Drink<br><span class="subtitle">Price Converter</span></h1>
     </header>
 
     <form action="" method="POST">
