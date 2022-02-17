@@ -91,11 +91,10 @@ function selected($currency, $selectName)
             <option value="chf" <?= selected("chf", "currencies1") ?>>₣</option>
         </select>
 
-        <input type="number" step="0.01" id="price" name="price" value="<?= $_POST["price"] ?? "" ?>" placeholder="enter price" required>
+        <input type="number" step="0.01" id="price" name="price" value="<?= $_POST["price"] ?? "" ?>" placeholder="9.99" required>
         <br>
-        <button class="button" type="submit" name="submit" value="swap">↑ swap ↓</button>
         <br>
-        <span>is</span>
+        <span>=</span>
         <select name="currencies2" id="currencies2">
             <option value="usd" <?= selected("usd", "currencies2") ?>>$</option>
             <option value="eur" <?= selected("eur", "currencies2") ?>>€</option>
@@ -112,6 +111,7 @@ function selected($currency, $selectName)
 
         <br>
         <button class="button" type="submit" name="submit" value="convert">convert</button>
+        <button class="button" type="submit" name="submit" value="swap">↑ swap ↓</button>
 
     </form>
 
