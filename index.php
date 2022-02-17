@@ -1,76 +1,61 @@
 <?php
+
 ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 
-echo '<pre>';
-echo var_dump($_POST);
-echo '</pre>';
+// echo '<pre>';
+// echo var_dump($_POST);
+// echo '</pre>';
 
 $currencyValueInUSD = [
     "usd" => [
-        // "name" => "USD",
+        "name" => "U.S. Dollar",
         "value" => 1,
+        "symbol" => "$",
     ],
     "eur" => [
-        // "name" => "EUR",
+        "name" => "European Euro",
         "value" => 1.14,
+        "symbol" => "€",
     ],
     "jpy" => [
-        // "name" => "JPY",
+        "name" => "Japanese Yen",
         "value" => 0.0087,
+        "symbol" => "¥",
     ],
     "gbp" => [
-        // "name" => "GBP",
+        "name" => "British Pound",
         "value" => 1.35,
+        "symbol" => "£",
     ],
     "chf" => [
-        // "name" => "JPY",
+        "name" => "Swiss Franc",
         "value" => 1.08,
+        "symbol" => "CHf",
     ],
 ];
 
-// echo var_dump($currencyValueInUSD);
-echo var_dump($currencyValueInUSD["usd"]["value"]);
+// echo var_dump($currencyValueInUSD["usd"]["value"]);
 
-function handleFormSubmission($currencyValueInUSD)
-{
-    if ($_SERVER["REQUEST_METHOD"] === "POST") {
-        // if ($_POST["submit"] === "switch") {
-        //     echo "<br>HERE<br>";
-        // }
-        // echo var_dump($_POST);
-        $amount = $_POST["amount"];
-        $currency1 = $_POST["currencies1"];
-        $conversionRate1 = $currencyValueInUSD[$currency1]["value"];
-        $currency2 = $_POST["currencies2"];
-        $conversionRate2 = $currencyValueInUSD[$currency2]["value"];
-        $fromTo = $_POST["submit"];
-        // echo $currency1;
-        // echo $currency2;
-        // echo $conversionRate1;
-        // echo $conversionRate2;
-        // echo $fromTo;
-
-        if ($fromTo === "from #1 to #2") {
-            // echo ($conversionRate1 / $conversionRate2) * $amount;
-            echo "$amount $currency1 is " . ($conversionRate1 / $conversionRate2) * $amount . " $currency2";
-        } else {
-            // echo ($conversionRate2 / $conversionRate1) * $amount;
-            echo "$amount $currency2 is " . ($conversionRate2 / $conversionRate1) * $amount . " $currency1";
-        }
+// $price = $_POST["price"];
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    if ($_POST["submit"] === "swap") {
+        $tmp = $_POST["currencies1"];
+        $_POST["currencies1"] = $_POST["currencies2"];
+        $_POST["currencies2"] = $tmp;
     }
 
-    // if (
-    //     $_SERVER["REQUEST_METHOD"] === "POST"
-    //     && !empty($_POST["price"])
-    //     && !empty($_POST["exchange_rate"])
-    // ) {
-    //     $price = $_POST["price"];
-    //     $exchange_rate = $_POST["exchange_rate"];
+    $price = $_POST["price"];
+    $currency1 = $_POST["currencies1"];
+    $conversionRate1 = $currencyValueInUSD[$currency1]["value"];
+    $currencySymbol1 = $currencyValueInUSD[$currency1]["symbol"];
+    $currency2 = $_POST["currencies2"];
+    $conversionRate2 = $currencyValueInUSD[$currency2]["value"];
+    $currencySymbol2 = $currencyValueInUSD[$currency2]["symbol"];
+    // $fromTo = $_POST["submit"];
 
-    //     echo "€" . $price . " * " . $exchange_rate . " = " . "€" . $price * $exchange_rate;
-    // }
+    // echo "${currencySymbol1}$price is $currencySymbol2" . round(($conversionRate1 / $conversionRate2) * $price, 2);
 }
 
 function selected($currency, $selectName)
@@ -78,7 +63,7 @@ function selected($currency, $selectName)
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         if ($currency === $_POST[$selectName]) {
-            return "selected=\"selected\"";
+            return "selected";
         }
     }
 }
@@ -91,60 +76,46 @@ function selected($currency, $selectName)
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Dream</title>
+    <title>Drink Price Converter</title>
 </head>
 
 <body>
-    <h1>The Dream</h1>
-
-    <!-- <form action="" method="POST">
-        <label for="price">price in local currency</label>
-        <input type="number" id="price" name="price" required>
-        <br>
-        <br>
-        <label for="exchange_rate">exchange rate to €</label>
-        <input type="number" id="exchange_rate" name="exchange_rate" required>
-        <br>
-        <br>
-        <input type="submit" name="submit">
-        <br>
-        <br>
-    </form> -->
-
-    <?php
-    if (isset($_POST["submit"])) {
-        handleFormSubmission($currencyValueInUSD);
-    }
-    ?>
+    <h1>Drink Price Converter</h1>
 
     <form action="" method="POST">
-        <input type="number" id="amount" name="amount" value="<?= $_POST["amount"] ?>" required>
-        <label for="amount">amount</label>
-        <br>
-        <br>
-        <select name="currencies1" id="currencies">
+        <!-- <label for="price">price</label> -->
+        <label for="currencies1">From </label>
+        <select name="currencies1" id="currencies1">
+            <!-- <option value="" selected disabled hidden>Choose a currency</option> -->
             <option value="usd" <?= selected("usd", "currencies1") ?>>U.S. Dollar (USD)</option>
             <option value="eur" <?= selected("eur", "currencies1") ?>>European Euro (EUR)</option>
             <option value="jpy" <?= selected("jpy", "currencies1") ?>>Japanese Yen (JPY)</option>
             <option value="gbp" <?= selected("gbp", "currencies1") ?>>British Pound (GBP)</option>
             <option value="chf" <?= selected("chf", "currencies1") ?>>Swiss Franc (CHF)</option>
         </select>
-        <label for="currencies">Currency #1</label>
+        <input type="number" step="0.01" id="price" name="price" value="<?= $_POST["price"] ?? "" ?>" placeholder="enter price" required>
         <br>
         <br>
-        <select name="currencies2" id="currencies">
+        <label for="currencies2">To</label>
+        <select name="currencies2" id="currencies2">
+            <!-- <option value="" selected disabled hidden>Choose a currency</option> -->
             <option value="usd" <?= selected("usd", "currencies2") ?>>U.S. Dollar (USD)</option>
             <option value="eur" <?= selected("eur", "currencies2") ?>>European Euro (EUR)</option>
             <option value="jpy" <?= selected("jpy", "currencies2") ?>>Japanese Yen (JPY)</option>
             <option value="gbp" <?= selected("gbp", "currencies2") ?>>British Pound (GBP)</option>
             <option value="chf" <?= selected("chf", "currencies2") ?>>Swiss Franc (CHF)</option>
         </select>
-        <label for="currencies">Currency #2</label>
-        <br>
-        <br>
 
-        <input type="submit" name="submit" value="from #1 to #2">
-        <input type="submit" name="submit" value="from #2 to #1">
+        <?php
+        if (!empty($_POST["submit"])) {
+            echo $currencySymbol2 . round(($conversionRate1 / $conversionRate2) * $price, 2);
+        }
+        ?>
+
+        <br>
+        <br>
+        <input type="submit" name="submit" value="convert">
+        <input type="submit" name="submit" value="swap">
 
     </form>
 
