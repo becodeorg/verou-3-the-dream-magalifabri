@@ -8,37 +8,34 @@ error_reporting(E_ALL);
 // echo var_dump($_POST);
 // echo '</pre>';
 
-$currencyValueInUSD = [
+$currencyData = [
     "usd" => [
         "name" => "U.S. Dollar",
-        "value" => 1,
+        "USDRate" => 1,
         "symbol" => "$",
     ],
     "eur" => [
         "name" => "European Euro",
-        "value" => 1.14,
+        "USDRate" => 1.14,
         "symbol" => "€",
     ],
     "jpy" => [
         "name" => "Japanese Yen",
-        "value" => 0.0087,
+        "USDRate" => 0.0087,
         "symbol" => "¥",
     ],
     "gbp" => [
         "name" => "British Pound",
-        "value" => 1.35,
+        "USDRate" => 1.35,
         "symbol" => "£",
     ],
     "chf" => [
         "name" => "Swiss Franc",
-        "value" => 1.08,
+        "USDRate" => 1.08,
         "symbol" => "CHf",
     ],
 ];
 
-// echo var_dump($currencyValueInUSD["usd"]["value"]);
-
-// $price = $_POST["price"];
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if ($_POST["submit"] === "swap") {
         $tmp = $_POST["currencies1"];
@@ -48,20 +45,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $price = $_POST["price"];
     $currency1 = $_POST["currencies1"];
-    $conversionRate1 = $currencyValueInUSD[$currency1]["value"];
-    $currencySymbol1 = $currencyValueInUSD[$currency1]["symbol"];
+    $conversionRate1 = $currencyData[$currency1]["USDRate"];
+    $currencySymbol1 = $currencyData[$currency1]["symbol"];
     $currency2 = $_POST["currencies2"];
-    $conversionRate2 = $currencyValueInUSD[$currency2]["value"];
-    $currencySymbol2 = $currencyValueInUSD[$currency2]["symbol"];
-    // $fromTo = $_POST["submit"];
-
-    // echo "${currencySymbol1}$price is $currencySymbol2" . round(($conversionRate1 / $conversionRate2) * $price, 2);
+    $conversionRate2 = $currencyData[$currency2]["USDRate"];
+    $currencySymbol2 = $currencyData[$currency2]["symbol"];
 }
 
 function selected($currency, $selectName)
 {
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
-
         if ($currency === $_POST[$selectName]) {
             return "selected";
         }
@@ -95,6 +88,7 @@ function selected($currency, $selectName)
         </select>
         <input type="number" step="0.01" id="price" name="price" value="<?= $_POST["price"] ?? "" ?>" placeholder="enter price" required>
         <br>
+        <input type="submit" name="submit" value="swap">
         <br>
         <label for="currencies2">To</label>
         <select name="currencies2" id="currencies2">
@@ -115,7 +109,6 @@ function selected($currency, $selectName)
         <br>
         <br>
         <input type="submit" name="submit" value="convert">
-        <input type="submit" name="submit" value="swap">
 
     </form>
 
