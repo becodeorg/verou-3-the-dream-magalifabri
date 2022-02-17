@@ -17,6 +17,7 @@ font-family: 'Dancing Script', cursive;
 header {
 
 }
+
 h1 {
     font-family: 'Dancing Script', cursive;
     font-size: 3rem;
@@ -31,13 +32,15 @@ select {
 input,
 select,
 label,
-.converted-price {
+.converted-price,
+.currency-symbol {
     font-size: 1.2rem;
 }
 
-.button {
+button {
     text-transform: uppercase;
     font-family: 'Oswald', sans-serif;
+    font-size: 1rem;
 }
 
 
@@ -56,10 +59,10 @@ label {
 }
 
 #price {
-    width: 5rem;
+    width: 8rem;
 }
 
-.button {
+button {
     padding: .2rem 1rem;
     margin: 1rem;
 }
