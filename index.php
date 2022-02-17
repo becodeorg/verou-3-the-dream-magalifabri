@@ -69,11 +69,17 @@ function selected($currency, $selectName)
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="./style.css">
+
     <title>Drink Price Converter</title>
 </head>
 
 <body>
-    <h1>Drink Price Converter</h1>
+
+    <head>
+        <h1>Drink Price Converter</h1>
+    </head>
 
     <form action="" method="POST">
         <!-- <label for="price">price</label> -->
@@ -88,7 +94,7 @@ function selected($currency, $selectName)
         </select>
         <input type="number" step="0.01" id="price" name="price" value="<?= $_POST["price"] ?? "" ?>" placeholder="enter price" required>
         <br>
-        <input type="submit" name="submit" value="swap">
+        <input class="button" type="submit" name="submit" value="swap">
         <br>
         <label for="currencies2">To</label>
         <select name="currencies2" id="currencies2">
@@ -102,13 +108,13 @@ function selected($currency, $selectName)
 
         <?php
         if (!empty($_POST["submit"])) {
-            echo $currencySymbol2 . round(($conversionRate1 / $conversionRate2) * $price, 2);
+            echo "<span class=\"converted-price\">" . $currencySymbol2 . round(($conversionRate1 / $conversionRate2) * $price, 2) . "</span>";
         }
         ?>
 
         <br>
         <br>
-        <input type="submit" name="submit" value="convert">
+        <input class="button" type="submit" name="submit" value="convert">
 
     </form>
 
