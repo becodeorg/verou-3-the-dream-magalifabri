@@ -32,7 +32,7 @@ $currencyData = [
     "chf" => [
         "name" => "Swiss Franc",
         "USDRate" => 1.08,
-        "symbol" => "CHf",
+        "symbol" => "₣",
     ],
 ];
 
@@ -60,6 +60,7 @@ function selected($currency, $selectName)
         }
     }
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -82,38 +83,35 @@ function selected($currency, $selectName)
     </header>
 
     <form action="" method="POST">
-        <!-- <label for="price">price</label> -->
-        <label for="currencies1">From </label>
         <select name="currencies1" id="currencies1">
-            <!-- <option value="" selected disabled hidden>Choose a currency</option> -->
-            <option value="usd" <?= selected("usd", "currencies1") ?>>U.S. Dollar (USD)</option>
-            <option value="eur" <?= selected("eur", "currencies1") ?>>European Euro (EUR)</option>
-            <option value="jpy" <?= selected("jpy", "currencies1") ?>>Japanese Yen (JPY)</option>
-            <option value="gbp" <?= selected("gbp", "currencies1") ?>>British Pound (GBP)</option>
-            <option value="chf" <?= selected("chf", "currencies1") ?>>Swiss Franc (CHF)</option>
+            <option value="usd" <?= selected("usd", "currencies1") ?>>$</option>
+            <option value="eur" <?= selected("eur", "currencies1") ?>>€</option>
+            <option value="jpy" <?= selected("jpy", "currencies1") ?>>¥</option>
+            <option value="gbp" <?= selected("gbp", "currencies1") ?>>£</option>
+            <option value="chf" <?= selected("chf", "currencies1") ?>>₣</option>
         </select>
+
         <input type="number" step="0.01" id="price" name="price" value="<?= $_POST["price"] ?? "" ?>" placeholder="enter price" required>
         <br>
-        <input class="button" type="submit" name="submit" value="swap">
+        <button class="button" type="submit" name="submit" value="swap">↑ swap ↓</button>
         <br>
-        <label for="currencies2">To</label>
+        <span>is</span>
         <select name="currencies2" id="currencies2">
-            <!-- <option value="" selected disabled hidden>Choose a currency</option> -->
-            <option value="usd" <?= selected("usd", "currencies2") ?>>U.S. Dollar (USD)</option>
-            <option value="eur" <?= selected("eur", "currencies2") ?>>European Euro (EUR)</option>
-            <option value="jpy" <?= selected("jpy", "currencies2") ?>>Japanese Yen (JPY)</option>
-            <option value="gbp" <?= selected("gbp", "currencies2") ?>>British Pound (GBP)</option>
-            <option value="chf" <?= selected("chf", "currencies2") ?>>Swiss Franc (CHF)</option>
+            <option value="usd" <?= selected("usd", "currencies2") ?>>$</option>
+            <option value="eur" <?= selected("eur", "currencies2") ?>>€</option>
+            <option value="jpy" <?= selected("jpy", "currencies2") ?>>¥</option>
+            <option value="gbp" <?= selected("gbp", "currencies2") ?>>£</option>
+            <option value="chf" <?= selected("chf", "currencies2") ?>>₣</option>
         </select>
 
         <?php
         if (!empty($_POST["submit"])) {
-            echo "<span class=\"converted-price\">" . $currencySymbol2 . round(($conversionRate1 / $conversionRate2) * $price, 2) . "</span>";
+            echo "<span class=\"converted-price\">" . round(($conversionRate1 / $conversionRate2) * $price, 2) . "</span>";
         }
         ?>
 
         <br>
-        <input class="button" type="submit" name="submit" value="convert">
+        <button class="button" type="submit" name="submit" value="convert">convert</button>
 
     </form>
 
