@@ -25,9 +25,7 @@ h1 {
 body,
 input,
 select {
-    /* font-family: 'Oswald', sans-serif; */
-font-family: 'Open Sans', sans-serif;
-
+    font-family: 'Open Sans', sans-serif;
 }
 
 input,
@@ -40,4 +38,28 @@ label,
 .button {
     text-transform: uppercase;
     font-family: 'Oswald', sans-serif;
+}
+
+
+
+body {
+    padding: 1rem;
+    text-align: center;
+}
+
+header {
+    padding: 1rem 0 2rem;
+}
+
+label {
+    width: 5rem;
+}
+
+#price {
+    width: 5rem;
+}
+
+.button {
+    padding: .2rem 1rem;
+    margin: 1rem;
 }

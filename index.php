@@ -77,9 +77,9 @@ function selected($currency, $selectName)
 
 <body>
 
-    <head>
+    <header>
         <h1>Drink Price Converter</h1>
-    </head>
+    </header>
 
     <form action="" method="POST">
         <!-- <label for="price">price</label> -->
@@ -112,7 +112,6 @@ function selected($currency, $selectName)
         }
         ?>
 
-        <br>
         <br>
         <input class="button" type="submit" name="submit" value="convert">
 
