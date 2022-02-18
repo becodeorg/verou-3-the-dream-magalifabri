@@ -53,7 +53,8 @@ span {
 button {
     text-transform: uppercase;
     font-family: 'Oswald', sans-serif;
-    font-size: 1rem;
+    font-size: 1.5rem;
+    font-weight: 200;
 }
 
 
@@ -73,7 +74,7 @@ body {
 }
 
 header {
-    padding: 1rem 0 2rem;
+    padding: 0rem 0 2rem;
 }
 .subtitle {
     z-index: -1;
@@ -132,7 +133,8 @@ form {
 }
 
 select,
-#price {
+#price,
+button {
     background-color: rgba(255, 255, 255, 0);
     border-radius: 2px;
     border: none;
@@ -144,16 +146,22 @@ select,
 }
 
 select:focus,
-#price:focus {
+#price:focus,
+button:focus {
     outline: none;
     background-color: rgba(255, 255, 255, 0.5);
 }
 
 select:hover,
-#price:hover {
+#price:hover,
+button:hover {
     background-color: rgba(255, 255, 255, 0.493);
 }
 
 ::placeholder {
     color: rgba(0, 0, 0, 0.5);
+}
+
+button {
+    border: 1px solid black;
 }
