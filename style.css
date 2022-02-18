@@ -26,6 +26,9 @@ h1 {
     font-family: 'Dancing Script', cursive;
     font-size: 4rem;
 }
+h1::first-line {
+    text-shadow: 1px 1px 3px black;
+}
 .subtitle {
     font-family: 'Oswald', sans-serif;
     font-weight: 200;
