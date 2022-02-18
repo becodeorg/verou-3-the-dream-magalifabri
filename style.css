@@ -131,13 +131,29 @@ form {
     border-radius: 5px;
 }
 
-select {
+select,
+#price {
     background-color: rgba(255, 255, 255, 0);
+    border-radius: 2px;
     border: none;
+    transition: all .3s ease;
 }
 
 #price {
-    background-color: rgba(255, 255, 255, 0);
-    border: none;
     border-bottom: 1px solid white;
+}
+
+select:focus,
+#price:focus {
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+select:hover,
+#price:hover {
+    background-color: rgba(255, 255, 255, 0.493);
+}
+
+::placeholder {
+    color: rgba(0, 0, 0, 0.5);
 }
