@@ -98,17 +98,48 @@ form {
     padding: 2rem 1rem;
 }
 
-label {
-    width: 5rem;
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.row + .row {
+    margin-top: .5rem;
+}
+
+select {
+    margin-right: .5rem;
 }
 
 #price {
     width: 7rem;
 }
 
+.equals {
+    display: inline-block;
+    width: 2rem;
+}
+
+.converted-price {
+    display: inline-block;
+    width: 9rem;
+    overflow-x: scroll;
+    text-align: left;
+}
+
+.converted-price::-webkit-scrollbar {
+    height: 3px;
+}
+.converted-price::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 3px;
+}
+
 button {
     padding: .2rem 1rem;
     margin: 1rem .5rem 0rem;
+    flex-shrink: 0;
 }
 
 .error-message {
