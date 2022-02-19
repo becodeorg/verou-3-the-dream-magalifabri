@@ -58,14 +58,9 @@
         <?php endif ?>
 
         <!-- CONVERTED PRICE OUTPUT -->
-        <?php
-        if (
-            !empty($_POST["submit"])
-            && !empty($convertedPrice)
-        ) {
-            echo "<span class=\"converted-price\">" . $convertedPrice . "</span>";
-        }
-        ?>
+        <?php if (!empty($_POST["submit"]) && !empty($convertedPrice)) : ?>
+            <span class="converted-price"><?= $convertedPrice ?></span>
+        <?php endif ?>
         <br>
 
         <!-- BUTTONS -->
