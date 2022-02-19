@@ -23,11 +23,17 @@ function pre_r(array $str)
 
 // MAIN LOGIC
 
+function swapCurrencies()
+{
+    $tmp = $_POST["currencies1"];
+    $_POST["currencies1"] = $_POST["currencies2"];
+    $_POST["currencies2"] = $tmp;
+}
+
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if ($_POST["submit"] === "swap") {
-        $tmp = $_POST["currencies1"];
-        $_POST["currencies1"] = $_POST["currencies2"];
-        $_POST["currencies2"] = $tmp;
+        swapCurrencies();
     }
 
     $price = $_POST["price"];
