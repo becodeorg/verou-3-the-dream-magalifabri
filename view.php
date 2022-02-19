@@ -26,11 +26,20 @@
             <option value="chf" <?= selected("chf", "currencies1") ?>>₣</option>
         </select>
 
+        <?php if (!empty($validationErrors["currencies1"])) : ?>
+            <p class="error-message"><?= $validationErrors["currencies1"] ?? "" ?></p>
+        <?php endif ?>
+
         <!-- <input type="number" step="0.01" min="0" id="price" name="price" value="<?= $_POST["price"] ?? "" ?>" placeholder="0" required> -->
-        <input type="number" step="0.01" id="price" name="price" value="<?= $_POST["price"] ?? "" ?>" placeholder="0">
-        <p class="error-message"><?= $validationErrors["price"] ?? "" ?></p>
+        <input type="text" step="0.01" id="price" name="price" value="<?= $_POST["price"] ?? "" ?>" placeholder="0">
+
+        <?php if (!empty($validationErrors["price"])) : ?>
+            <p class="error-message"><?= $validationErrors["price"] ?? "" ?></p>
+        <?php endif ?>
+
         <br>
         <br>
+
         <span>=</span>
         <select name="currencies2" id="currencies2">
             <option value="usd" <?= selected("usd", "currencies2") ?>>$</option>
@@ -39,6 +48,10 @@
             <option value="gbp" <?= selected("gbp", "currencies2") ?>>£</option>
             <option value="chf" <?= selected("chf", "currencies2") ?>>₣</option>
         </select>
+
+        <?php if (!empty($validationErrors["currencies2"])) : ?>
+            <p class="error-message"><?= $validationErrors["currencies2"] ?? "" ?></p>
+        <?php endif ?>
 
         <?php
         if (
