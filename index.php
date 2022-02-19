@@ -46,6 +46,8 @@ function validateForm(): array
         $validationErrors["price"] = "enter price";
     } else if ($_POST["price"] < 0) {
         $validationErrors["price"] = "enter positive number";
+    } else if (!filter_var($_POST["price"], FILTER_VALIDATE_FLOAT, ["options" => ["min_range" => 0, "max_range" => 999999]])) {
+        $validationErrors["price"] = "not a valid number";
     }
 
     if (empty($_POST["currencies1"])) {
