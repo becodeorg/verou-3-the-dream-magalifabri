@@ -23,6 +23,28 @@ function pre_r(array $str)
 
 // MAIN LOGIC
 
+function validateForm(): array
+{
+    $validationErrors = [];
+
+    if (empty($_POST["price"])) {
+        $validationErrors["price"] = "enter price";
+    } else if ($_POST["price"] < 0) {
+        $validationErrors["price"] = "enter positive number";
+    }
+
+    if (empty($_POST["currencies1"])) {
+        $validationErrors["currencies1"] = "select a currency";
+    }
+
+    if (empty($_POST["currencies2"])) {
+        $validationErrors["currencies2"] = "select a currency";
+    }
+
+    return $validationErrors;
+}
+
+
 function swapCurrencies()
 {
     $tmp = $_POST["currencies1"];
@@ -36,13 +58,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         swapCurrencies();
     }
 
-    $price = $_POST["price"];
-    $currency1 = $_POST["currencies1"];
-    $conversionRate1 = $currencyData[$currency1]["USDRate"];
-    $currencySymbol1 = $currencyData[$currency1]["symbol"];
-    $currency2 = $_POST["currencies2"];
-    $conversionRate2 = $currencyData[$currency2]["USDRate"];
-    $currencySymbol2 = $currencyData[$currency2]["symbol"];
+    $validationErrors = validateForm();
+
+    if (empty($validationErrors)) {
+        $price = $_POST["price"];
+        $currency1 = $_POST["currencies1"];
+        $conversionRate1 = $currencyData[$currency1]["USDRate"];
+        $currencySymbol1 = $currencyData[$currency1]["symbol"];
+        $currency2 = $_POST["currencies2"];
+        $conversionRate2 = $currencyData[$currency2]["USDRate"];
+        $currencySymbol2 = $currencyData[$currency2]["symbol"];
+        $convertedPrice = round(($conversionRate1 / $conversionRate2) * $price, 2);
+    }
 }
 
 function selected($currency, $selectName)

@@ -26,7 +26,9 @@
             <option value="chf" <?= selected("chf", "currencies1") ?>>₣</option>
         </select>
 
-        <input type="number" step="0.01" id="price" name="price" value="<?= $_POST["price"] ?? "" ?>" placeholder="9.99" required>
+        <!-- <input type="number" step="0.01" min="0" id="price" name="price" value="<?= $_POST["price"] ?? "" ?>" placeholder="0" required> -->
+        <input type="number" step="0.01" id="price" name="price" value="<?= $_POST["price"] ?? "" ?>" placeholder="0">
+        <p class="error-message"><?= $validationErrors["price"] ?? "" ?></p>
         <br>
         <br>
         <span>=</span>
@@ -39,7 +41,10 @@
         </select>
 
         <?php
-        if (!empty($_POST["submit"])) {
+        if (
+            !empty($_POST["submit"])
+            && !empty($convertedPrice)
+        ) {
             echo "<span class=\"converted-price\">" . round(($conversionRate1 / $conversionRate2) * $price, 2) . "</span>";
         }
         ?>
