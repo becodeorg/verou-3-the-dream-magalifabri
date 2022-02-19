@@ -45,7 +45,7 @@
             !empty($_POST["submit"])
             && !empty($convertedPrice)
         ) {
-            echo "<span class=\"converted-price\">" . round(($conversionRate1 / $conversionRate2) * $price, 2) . "</span>";
+            echo "<span class=\"converted-price\">" . $convertedPrice . "</span>";
         }
         ?>
 

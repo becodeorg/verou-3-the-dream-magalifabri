@@ -23,6 +23,21 @@ function pre_r(array $str)
 
 // MAIN LOGIC
 
+function calcConvertedPrice($currencyData): float
+{
+    $price = $_POST["price"];
+    $currency1 = $_POST["currencies1"];
+    $currency2 = $_POST["currencies2"];
+
+    $conversionRate1 = $currencyData[$currency1]["USDRate"];
+    $conversionRate2 = $currencyData[$currency2]["USDRate"];
+
+    $convertedPrice = round(($conversionRate1 / $conversionRate2) * $price, 2);
+
+    return $convertedPrice;
+}
+
+
 function validateForm(): array
 {
     $validationErrors = [];
@@ -61,16 +76,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $validationErrors = validateForm();
 
     if (empty($validationErrors)) {
-        $price = $_POST["price"];
-        $currency1 = $_POST["currencies1"];
-        $conversionRate1 = $currencyData[$currency1]["USDRate"];
-        $currencySymbol1 = $currencyData[$currency1]["symbol"];
-        $currency2 = $_POST["currencies2"];
-        $conversionRate2 = $currencyData[$currency2]["USDRate"];
-        $currencySymbol2 = $currencyData[$currency2]["symbol"];
-        $convertedPrice = round(($conversionRate1 / $conversionRate2) * $price, 2);
+        $convertedPrice = calcConvertedPrice($currencyData);
     }
 }
+
+
+// VIEW FUNCTIONS
 
 function selected($currency, $selectName)
 {
@@ -80,5 +91,6 @@ function selected($currency, $selectName)
         }
     }
 }
+
 
 require_once "./view.php";
