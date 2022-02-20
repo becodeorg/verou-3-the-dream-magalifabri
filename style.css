@@ -1,10 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Oswald:wght@200;300;400;500;600;700&family=Pacifico&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Oswald:wght@200;300;400;500;600;700&family=Roboto:wght@100;300;400;500;700&display=swap');
 
 /*
 font-family: 'Open Sans', sans-serif;
 font-family: 'Oswald', sans-serif;
 font-family: 'Pacifico', cursive;
-font-family: 'Playfair Display', serif;
 font-family: 'Dancing Script', cursive;
 */
 
@@ -12,11 +11,6 @@ font-family: 'Dancing Script', cursive;
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-}
-
-
-header {
-
 }
 
 
@@ -82,7 +76,7 @@ body {
 }
 
 header {
-    padding: 0rem 0 2rem;
+    margin-top: auto;
 }
 .subtitle {
     z-index: -1;
@@ -96,6 +90,7 @@ header {
 
 form {
     padding: 2rem 1rem;
+    margin-bottom: 2rem;
 }
 
 .row {
@@ -208,4 +203,25 @@ button {
 
 .error-message {
     color: rgb(187, 0, 0);
+}
+
+footer {
+    background: linear-gradient(-45deg, rgb(36, 36, 36), rgb(49, 49, 49));
+    margin: 0 -1rem -1rem -1rem;
+    margin-top: auto;
+    padding: 1rem;
+    border-top: 1px solid black;
+    width: 100vw;
+    color: white;
+}
+footer span {
+    font-size: .9rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100;
+    margin: 0 1rem;
+}
+footer span a {
+    color: white;
+    text-decoration: none;
+    font-weight: 300;
 }
