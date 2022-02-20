@@ -1,4 +1,4 @@
-# [The Dream](https://the-dream.herokuapp.com/)
+# [The Dream](https://github.com/becodeorg/verou-3-the-dream-magalifabri)
 
 ## Exercise Description
 *"Dreaming about going on vacation after the course?"*
