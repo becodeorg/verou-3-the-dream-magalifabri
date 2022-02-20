@@ -79,7 +79,7 @@
 
     <footer>
         <span>Made by Magali Fabri</span>
-        • <span>View code on <a href="https://github.com/becodeorg/verou-3-order-form-magalifabri">GitHub</a></span>
+        • <span>View code on <a href="https://github.com/becodeorg/verou-3-the-dream-magalifabri">GitHub</a></span>
         • <span>Deployed with <a href="https://www.heroku.com/home">Heroku</a></span>
         • <span>Photo by <a href="https://unsplash.com/@arobj">Adam Jaime</a> on <a href="https://unsplash.com/">Unsplash</a></span>
     </footer>
