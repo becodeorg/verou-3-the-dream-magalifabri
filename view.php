@@ -31,7 +31,7 @@
             </select>
 
             <!-- PRICE INPUT -->
-            <input type="number" step="0.01" min="0.01" id="price" name="price" value="<?= $_POST["price"] ?? "0" ?>" placeholder="0" required autocomplete="off">
+            <input type="number" step="0.01" min="0.01" id="price" name="price" value="<?= $_POST["price"] ?? "" ?>" placeholder="0" required autocomplete="off">
             <!-- <input type="text" step="0.01" id="price" name="price" value="<?= $_POST["price"] ?? "" ?>" placeholder="0"> -->
 
         </div>
