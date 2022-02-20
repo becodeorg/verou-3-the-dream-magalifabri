@@ -116,6 +116,28 @@ form {
     margin-top: .5rem;
 }
 
+select,
+#price,
+button {
+    background-color: rgba(255, 255, 255, 0);
+    border-radius: 2px;
+    border: none;
+    transition: all .3s ease;
+}
+
+select:focus,
+#price:focus,
+button:focus {
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+select:hover,
+#price:hover,
+button:hover {
+    background-color: rgba(255, 255, 255, 0.493);
+}
+
 select {
     margin-right: .5rem;
 }
@@ -163,28 +185,6 @@ button {
     font-size: 1rem;
     font-weight: 400;
     color: rgb(187, 0, 0);
-}
-
-select,
-#price,
-button {
-    background-color: rgba(255, 255, 255, 0);
-    border-radius: 2px;
-    border: none;
-    transition: all .3s ease;
-}
-
-select:focus,
-#price:focus,
-button:focus {
-    outline: none;
-    background-color: rgba(255, 255, 255, 0.5);
-}
-
-select:hover,
-#price:hover,
-button:hover {
-    background-color: rgba(255, 255, 255, 0.493);
 }
 
 ::placeholder {
